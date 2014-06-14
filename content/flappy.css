@@ -42,3 +42,7 @@ b.author {
     font-weight: boldest;
     color: #FFA000;
 }
+
+img.preload {
+    display: none;
+}

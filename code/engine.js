@@ -1,15 +1,3 @@
-
-
-var VECTOR = {
-    create: function(x, y) {
-        return { x: x, y: y };
-    },
-
-    forParallax: function(x) {
-        return VECTOR.create(x, 0);
-    }
-};
-
 function FlappyEngine(game) {
     var engine = this;
 
@@ -29,14 +17,6 @@ function FlappyEngine(game) {
         for (i = 0; i < sprites.length; i++) {
             sprites[i].update(elapsedSecs);
         }
-    };
-
-    var adjustRect = function(rect, bounds) {
-        return RECT.create(
-            rect.x < 0 ? bounds.width + rect.x : rect.x,
-            rect.y < 0 ? bounds.height + rect.y : rect.y,
-            !rect.width ? bounds.width : rect.width,
-            !rect.height ? bounds.height : rect.height);
     };
 
     // Animates the current frame
@@ -86,25 +66,37 @@ function FlappyEngine(game) {
         rendering = false;
     }
 
-    this.spriteFromImage = function(imagePath, regionRect, textureRect) {
-        var sprite = withPlacement(PIXI.Sprite.fromImage(imagePath, textureRect), regionRect);
+    this.createTexture = function(imageId) {
+        var element = null;
+
+        if (element = document.getElementById(imageId)) {
+            var baseTexture = new PIXI.BaseTexture(element);
+            return new PIXI.Texture(baseTexture);
+        }
+        else {
+            return PIXI.Texture.fromImage(imageId);
+        }
+    }
+
+    this.spriteFromImage = function(imageId, regionRect, textureRect) {
+        var sprite = withPlacement(new PIXI.Sprite(this.createTexture(imageId)), regionRect);
 
         sprite.update = function(elapsedSecs) { };
 
         return addSprite(sprite);
     }
 
-    this.obstacleSpriteFromImage = function(imagePath, regionRects, textureRects, velocity) {
-        var texture = PIXI.Texture.fromImage(imagePath);
+    this.obstacleSpriteFromImage = function(imageId, regionRects, textureRects, velocity) {
+        var texture = this.createTexture(imageId);
 
         textureRects = {
-            pipe: adjustRect(textureRects.pipe, RECT.createFromContainer(texture)),
-            portal: adjustRect(textureRects.portal, RECT.createFromContainer(texture))
+            pipe: RECT.adjust(textureRects.pipe, RECT.createFromContainer(texture)),
+            portal: RECT.adjust(textureRects.portal, RECT.createFromContainer(texture))
         };
 
         var sprites = {
-            pipe: withPlacement(new PIXI.TilingSprite(texture, 1, 1), adjustRect(regionRects.pipe, this.viewport)),
-            portal: withPlacement(new PIXI.TilingSprite(texture, 1, 1), adjustRect(regionRects.portal, this.viewport))
+            pipe: withPlacement(new PIXI.TilingSprite(texture, 1, 1), RECT.adjust(regionRects.pipe, this.viewport)),
+            portal: withPlacement(new PIXI.TilingSprite(texture, 1, 1), RECT.adjust(regionRects.portal, this.viewport))
         };
 
         var region = regionRects.pipe;
@@ -165,8 +157,8 @@ function FlappyEngine(game) {
         return sprites;
     }
 
-    this.parallaxSpriteFromImage = function(imagePath, regionRect, textureRect, scrollVelocity) {
-        var texture = PIXI.Texture.fromImage(imagePath);
+    this.parallaxSpriteFromImage = function(imageId, regionRect, textureRect, scrollVelocity) {
+        var texture = this.createTexture(imageId);
 
         if (!textureRect) {
             textureRect = RECT.create(0, 0, texture.width, texture.height);

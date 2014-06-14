@@ -45,15 +45,11 @@ function FlappyGame() {
 }
 
 function createBackgroundParallax(engine) {
-    var BACKGROUND_URL = "content/background.png";
-
-    engine.parallaxSpriteFromImage(BACKGROUND_URL, RECT.create(0, 0, null, 80), RECT.create(0, 0, null, 64), VECTOR.forParallax(30));
-    engine.parallaxSpriteFromImage(BACKGROUND_URL, RECT.create(0, 20, null, 80), RECT.create(0, 64, null, 64), VECTOR.forParallax(45));
-    engine.parallaxSpriteFromImage(BACKGROUND_URL, RECT.create(0, -240, null, 200), RECT.create(0, 128, null, 128), VECTOR.forParallax(22));
-    engine.parallaxSpriteFromImage(BACKGROUND_URL, RECT.create(0, -300, null, 260), RECT.create(0, 256, null, 128), VECTOR.forParallax(55));
-    engine.parallaxSpriteFromImage(BACKGROUND_URL, RECT.create(0, -40, null, 40), RECT.create(0, -64, null, 64), VECTOR.forParallax(90));
-
-    //engine.parallaxSpriteFromImage("content/obstacle.png", RECT.create(0, 300, null, 120), RECT.create(0, 96, null, 160), VECTOR.forParallax(90));
+    engine.parallaxSpriteFromImage("content/distantClouds.png", RECT.create(0, 0, null, 80), null, VECTOR.forParallax(30));
+    engine.parallaxSpriteFromImage("content/nearClouds.png", RECT.create(0, 20, null, 80), null, VECTOR.forParallax(45));
+    engine.parallaxSpriteFromImage("content/distantMountains.png", RECT.create(0, -240, null, 200), null, VECTOR.forParallax(22));
+    engine.parallaxSpriteFromImage("content/nearMountains.png", RECT.create(0, -300, null, 260), null, VECTOR.forParallax(55));
+    engine.parallaxSpriteFromImage("content/ground.png", RECT.create(0, -40, null, 40), null, VECTOR.forParallax(90));
 }
 
 function constructLevel(levelBuilder) {

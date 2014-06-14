@@ -10,15 +10,29 @@
     <script src="code/game.js"></script>
 
     <title>Code-Lab: Flappy Chicken</title>
-</head>
+</heald>
 <body>
     <div id="gameHud" class="gameHud"></div>
     <div id="gameRegion" class="gameRegion"></div>
     <script>
-        var flappyGame = new FlappyGame();
-        var flappyEngine = new FlappyEngine(flappyGame);
+        var loader = new PIXI.AssetLoader([
+            "content/distantClouds.png",
+            "content/distantMountains.png",
+            "content/nearClouds.png",
+            "content/nearMountains.png",
+            "content/ground.png",
+            "content/bird.png",
+            "content/obstacle.png"],
+            false);
 
-        flappyEngine.start();
+        loader.onComplete = function() { loadFlappy(); }
+        loader.load();
+
+        function loadFlappy() {
+            var flappyGame = new FlappyGame();
+            var flappyEngine = new FlappyEngine(flappyGame);
+            flappyEngine.start();
+        }
     </script>
 </body>
 </html>
