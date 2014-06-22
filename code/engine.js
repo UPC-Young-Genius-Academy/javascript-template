@@ -191,8 +191,8 @@ function FlappyEngine(game) {
 
         // TODO: factor this logic into a withScroll method
         sprite.update = function(elapsedSecs) {
-            this.tilePosition.x -= elapsedSecs * this.scrollVelocity.x;
-            this.tilePosition.y -= elapsedSecs * this.scrollVelocity.y;
+            this.tilePosition.x -= elapsedSecs * this.scrollVelocity.x / this.tileScale.x;
+            this.tilePosition.y -= elapsedSecs * this.scrollVelocity.y / this.tileScale.y;
         };
 
         return addSprite(sprite);

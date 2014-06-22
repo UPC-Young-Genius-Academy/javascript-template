@@ -55,5 +55,6 @@ function createBackgroundParallax(engine) {
 function constructLevel(levelBuilder) {
     levelBuilder.obstacleSpeed = 90;
     levelBuilder.addObstacle(0);
+    levelBuilder.addObstacle(50);
     levelBuilder.addObstacle(100);
 }

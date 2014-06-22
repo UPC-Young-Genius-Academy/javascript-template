@@ -7,27 +7,27 @@ body {
 .gameTitle {
     margin: 6px 2px 2px 12px;
     color: #A0FF00;
-    font-size: 3em;
+    font-size: 2em;
 }
 
 .gameAuthor {
     margin: 6px 2px 2px 12px;
     color: #CCC;
-    font-size: 1.4em;
+    font-size: 1em;
 }
 
 .gameHud {
     position: absolute;
     display: block;
     width: 100%;
-    height: 7em;
+    height: 10%;
     background-color: #224;
 }
 
 .gameRegion {
     position: absolute;
     display: block;
-    top: 7em;
+    top: 10%;
     width: 100%;
     height: 90%;
     background-color: #1A1;
