@@ -5,34 +5,18 @@
     <link href="content/flappy.css" rel="stylesheet" />
 
     <script src="code/ext/pixi.js"></script>
-    <script src="code/utility.js"></script>
-    <script src="code/engine.js"></script>
-    <script src="code/game.js"></script>
+    <script src="code/ext/jquery-2.1.1.min.js"></script>
+
+    <script src="code/core/settings.js"></script>
+    <script src="code/core/resources.js"></script>
+    <script src="code/core/flappy.js"></script>
+    <script src="code/core/flappy.objects.js"></script>
 
     <title>Code-Lab: Flappy Chicken</title>
-</heald>
+</head>
 <body>
-    <div id="gameHud" class="gameHud"></div>
-    <div id="gameRegion" class="gameRegion"></div>
-    <script>
-        var loader = new PIXI.AssetLoader([
-            "content/distantClouds.png",
-            "content/distantMountains.png",
-            "content/nearClouds.png",
-            "content/nearMountains.png",
-            "content/ground.png",
-            "content/bird.png",
-            "content/obstacle.png"],
-            false);
-
-        loader.onComplete = function() { loadFlappy(); }
-        loader.load();
-
-        function loadFlappy() {
-            var flappyGame = new FlappyGame();
-            var flappyEngine = new FlappyEngine(flappyGame);
-            flappyEngine.start();
-        }
-    </script>
+    <div id="author" class="gameHud"></div>
+    <div id="screen" class="screen"></div>
+    <script src="code/game.js"></script>
 </body>
 </html>

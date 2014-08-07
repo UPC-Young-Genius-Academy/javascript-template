@@ -8,6 +8,10 @@ var RECT = {
         };
     },
 
+    forParallax: function(y, height) {
+        return RECT.create(0, y, null, height);
+    },
+
     createFromContainer: function(container) {
         return RECT.create(0, 0, container.width, container.height);
     },
