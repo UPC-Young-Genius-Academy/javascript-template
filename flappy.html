@@ -12,11 +12,29 @@
     <script src="code/core/flappy.js"></script>
     <script src="code/core/flappy.objects.js"></script>
 
+    <script src="code/input.js"></script>
+
     <title>Code-Lab: Flappy Chicken</title>
 </head>
-<body>
-    <div id="author" class="gameHud"></div>
-    <div id="screen" class="screen"></div>
+<body id="body" onresize="FLAPPY.resize()" onload="FLAPPY.resize()" onkeydown="return FLAPPY.input(event.which || event.keyCode)">
+    <div id="game_container" class="game">
+        <div id="hud_container" class="hud">
+            <div id="author_container" class="author">
+                <p class="title">Flappy Chicken!</p>
+                <p class="author_intro">by</p>
+                <p id="author" class="author"></p>
+            </div>
+            <div id="score_container" class="score">
+                <p class="score_label">Score</p>
+                <p id="score" class="score">-1</p>
+            </div>
+        </div>
+        <div id="screen_container" class="screen"></div>
+    </div>
+    <div id="status_container" class="status">
+        <p id="status" class="message">No status message.</p>
+    </div>
+
     <script src="code/game.js"></script>
 </body>
 </html>

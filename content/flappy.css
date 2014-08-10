@@ -1,47 +1,154 @@
-body {
+* {
     margin: 0px;
     padding: 0px;
-    background-color: #224;
+    color: #AAA;
 }
 
-.gameTitle {
-    margin: 6px 2px 2px 12px;
-    color: #A0FF00;
+p {
+    text-shadow:
+       3px  3px 0 #000,
+      -1px -1px 0 #000,
+       1px -1px 0 #000,
+      -1px  1px 0 #000,
+       1px  1px 0 #000;
+}
+
+html, body {
+    background-color: #232;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+div.game {
+    width: 100%;
+    height: 100%;
+}
+
+div.hud {
+    min-height: 72px;
+    max-height: 72px;
+    height: 72px;
+}
+
+div.author {
+    float: left;
+    min-width: 650px;
+    max-width: 650px;
+    height: 72px;
+    margin-left: 8px;
+}
+
+p.title {
     font-size: 2em;
+    font-weight: bold;
+    color: yellow;
+    margin-bottom: 8px;
 }
 
-.gameAuthor {
-    margin: 6px 2px 2px 12px;
-    color: #CCC;
-    font-size: 1em;
+p.author_intro {
+    display: inline-block;
+    margin-left: 16px;
+    margin-right: 16px;
+    font-size: 0.75em;
+    color: white;
 }
 
-.gameHud {
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 10%;
-    background-color: #224;
+p.author {
+    color: gold;
+    display: inline-block;
+    font-size: 1.25em;
 }
 
-.screen {
-    position: absolute;
-    display: block;
-    top: 10%;
-    width: 100%;
-    height: 90%;
+div.score {
+    float: right;
+    min-width: 150px;
+    max-width: 150px;
+    height: 72px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+p.score_label {
+    margin-top: 4px;
+    margin-bottom: -4px;
+    font-size: 24px;
+    color: #888;
+}
+
+p.score {
+    font-size: 36px;
+    color: gold;
+}
+
+div.screen {
+    border-top: 2px solid #454;
+    border-bottom: 2px solid #454;
+}
+
+div.status {
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+    text-align: right;
+    padding-right: 8px;
+}
+
+p.message, p.alert, p.instruction {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+p.message {
+    color: #777;
+}
+
+p.alert, p.instruction {
+    -webkit-animation-name: blinker;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+
+    -moz-animation-name: blinker;
+    -moz-animation-duration: 1s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+
+    animation-name: blinker;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+p.alert {
+    color: #F33;
+    font-weight: bold;
+}
+
+p.instruction {
+    color: #3F3;
+    font-weight: bold;
+}
+
+@-moz-keyframes blinker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes blinker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@keyframes blinker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
 }
 
 .viewport {
     width: 100%;
     height: 100%;
-}
-
-b.author {
-    font-weight: boldest;
-    color: #FFA000;
-}
-
-img.preload {
-    display: none;
 }

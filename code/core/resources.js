@@ -1,3 +1,9 @@
+var STATE = {
+    READY: "ready",
+    RUNNING: "running",
+    GAME_OVER: "game-over"
+};
+
 var RESOURCES = {
     pixi: {
         renderer: PIXI.autoDetectRenderer(SETTINGS.rendering.width, SETTINGS.rendering.height),
@@ -5,15 +11,22 @@ var RESOURCES = {
     },
 
     game: {
+        soundFX: {
+            score: new Audio("content/audio/score.ogg")
+        },
+
         static: {
-            // objects that support being reset
-            objects: [],
             obstacles: [],
+            players: [],
             backgrounds: []
         },
+
         session: {
+            state: STATE.READY,
+            score: 0,
             objects: [],
-            colliders: []
+            colliders: [],
+            bindings: [],
         }
     },
 
